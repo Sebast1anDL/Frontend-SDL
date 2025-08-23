@@ -25,7 +25,7 @@ const MenuList = () => {
                 Experiencia inmersiva para gaming y productividad.
               </ListItem>
               <ListItem href="/monitores/Samsung" title="Samsung">
-                Monitores confiables y comodos.
+                Pantallas curvas y planas con la mejor calidad de imagen.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -37,16 +37,16 @@ const MenuList = () => {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <ListItem href="/tvs/Samsung" title="Samsung">
-                Calidad ultra alta definición para tu hogar.
+                Tecnología QLED y 4K para una experiencia premium.
               </ListItem>
               <ListItem href="/tvs/Enxuta" title="Enxuta">
-                Tamaño perfecto para salas medianas.
+                Televisores prácticos y accesibles para el día a día.
               </ListItem>
               <ListItem href="/tvs/Smartlife" title="Smartlife">
-                Experiencia cinematográfica en casa.
+                Smart TVs funcionales y fáciles de usar en tu hogar.
               </ListItem>
               <ListItem href="/tvs/Xiaomi" title="Xiaomi">
-                Pantallas grandes para máximo impacto.
+                Pantallas grandes con Android TV y excelente precio-calidad.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -58,16 +58,16 @@ const MenuList = () => {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <ListItem href="/notebooks/HP" title="HP">
-                Potencia máxima para juegos y creatividad.
+                Rendimiento confiable para estudio y trabajo.
               </ListItem>
               <ListItem href="/notebooks/Asus" title="Asus">
-                Portátiles ligeros para profesionales.
+                Diseño innovador y portátiles para gaming o productividad.
               </ListItem>
               <ListItem href="/notebooks/Lenovo" title="Lenovo">
-                Versatilidad de tablet y laptop.
+                Versatilidad con modelos 2 en 1 y gran durabilidad.
               </ListItem>
               <ListItem href="/notebooks/Acer" title="Acer">
-                Opciones económicas y funcionales.
+                Opciones económicas con buen balance entre potencia y precio.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -79,16 +79,16 @@ const MenuList = () => {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <ListItem href="/celulares/iphone" title="iPhone">
-                La última tecnología de Apple.
+                Ecosistema Apple con cámaras y rendimiento insuperables.
               </ListItem>
               <ListItem href="/celulares/samsung" title="Samsung">
-                Innovación y calidad Android.
+                Modelos Galaxy con innovación y calidad en cada gama.
               </ListItem>
               <ListItem href="/celulares/xiaomi" title="Xiaomi">
-                Gran relación calidad-precio.
+                Celulares potentes y accesibles con MIUI y gran batería.
               </ListItem>
               <ListItem href="/celulares/huawei" title="Huawei">
-                Tecnología avanzada y diseño elegante.
+                Fotografía móvil de nivel profesional con diseño elegante.
               </ListItem>
             </ul>
           </NavigationMenuContent>
