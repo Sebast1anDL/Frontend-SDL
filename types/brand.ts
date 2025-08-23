@@ -1,20 +1,14 @@
-// types/products.ts
-import { BrandType } from "./brand";
 import { CategoryType } from "./category";
 
-export type ProductType = {
+export type BrandType = {
   id: number;
   documentId: string;
-  productName: string;
+  brandName: string;
   slug: string;
-  description: string;
-  active: boolean;
-  isFeatured: boolean;
-  price: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  images: {
+  image?: {
     id: number;
     documentId: string;
     name: string;
@@ -35,6 +29,5 @@ export type ProductType = {
     updatedAt: string;
     publishedAt: string;
   }[];
-  brand?: BrandType | null;      // One-to-One relationship
-  category?: CategoryType | null; // One-to-One relationship
+  category?: CategoryType[];
 };

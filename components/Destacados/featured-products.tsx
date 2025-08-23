@@ -23,7 +23,9 @@ const FeaturedProducts = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold mb-8 text-blue-900 dark:text-blue-400">Productos Destacados</h2>
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold mb-8 text-blue-900 dark:text-blue-400">Productos Destacados</h2>
+      </div>
 
       {loading ? (
         <div className="space-y-6">
