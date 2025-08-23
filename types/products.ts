@@ -1,29 +1,43 @@
 export type ProductType = {
   id: number;
-  attributes: {
-    productName: string;
-    price: number;
-    description: string;
-    isFeatured: boolean;
-    active: boolean;
+  documentId: string;
+  productName: string;
+  slug: string;
+  description: string;
+  active: boolean;
+  isFeatured: boolean;
+  price: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  images: {
+    id: number;
+    documentId: string;
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    formats: any;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: any;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  }[];
+  brand: {
+    id: number;
+    documentId: string;
     slug: string;
-    images: {
-      data: {
-        id: number,
-        attributes: {
-            url: string;
-
-         }
-    };
-      
-    }[];
-
-  };
-
-category: {
-    data: { 
-        attributes: {
-            categoryName: string;
-            slug: string;
-
-        }   
+    brandName: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  } | null;
+};

@@ -1,26 +1,14 @@
 import { useEffect, useState } from "react";
-
-interface ProductAttribute {
-  name: string;
-  price: number;
-  description?: string;
-}
-
-interface Product {
-  id: number;
-  attributes: ProductAttribute;
-}
+import { ProductType } from "@/types/products";
 
 interface UseGetFeaturedProductsReturn {
-  result: Product[] | null;
+  result: ProductType[] | null;
   loading: boolean;
   error: string;
 }
 
 export function useGetFeaturedProducts(): UseGetFeaturedProductsReturn {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[isFeatured][$eq]=true&populate=*`;
-  
-  const [result, setResult] = useState<Product[] | null>(null);
+  const [result, setResult] = useState<ProductType[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
 
@@ -29,34 +17,41 @@ export function useGetFeaturedProducts(): UseGetFeaturedProductsReturn {
       try {
         setLoading(true);
         setError("");
-        
+
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[isFeatured][$eq]=true&populate=*`;
+
         const res = await fetch(url);
-        
+
         if (!res.ok) {
-          throw new Error(`Error ${res.status}: ${res.statusText}`);
+          throw new Error(`Error HTTP ${res.status}: ${res.statusText}`);
         }
-        
+
         const json = await res.json();
-        
-        if (json && Array.isArray(json.data)) {
-          setResult(json.data);
-        } else {
+
+        if (!json || !json.data || !Array.isArray(json.data)) {
           throw new Error("Estructura de respuesta inesperada");
         }
-        
+
+        setResult(json.data);
       } catch (err) {
-        const errorMessage = err instanceof Error 
-          ? err.message 
-          : "Error al cargar los productos destacados";
+        const errorMessage =
+          err instanceof Error
+            ? err.message
+            : "Error desconocido al cargar productos destacados";
         setError(errorMessage);
-        console.error("Error fetching featured products:", err);
+        setResult(null);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchFeaturedProducts();
-  }, [url]);
+    if (process.env.NEXT_PUBLIC_BACKEND_URL) {
+      fetchFeaturedProducts();
+    } else {
+      setError("NEXT_PUBLIC_BACKEND_URL no está configurado");
+      setLoading(false);
+    }
+  }, []);
 
   return { result, loading, error };
 }
