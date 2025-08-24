@@ -1,21 +1,33 @@
+'use client';
+
 import React from 'react';
 import {Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const dataFooter = [
     {
         id: 1,
-        name: "Sobre nosotros",
-        href: "#sobre-nosotros"
-    },
-    {
-        id: 2,
         name: "Mi cuenta",
         href: "#mi-cuenta"
     },
 ];
 
+// Define las categorías con sus slugs correspondientes
+const categories = [
+  { name: "Monitores", slug: "monitores" },
+  { name: "TVs", slug: "tv" },
+  { name: "Notebooks", slug: "notbooks" },
+  { name: "Celulares", slug: "celulares" }
+];
+
 const Footer = () => {
+  const router = useRouter();
+
+  const handleCategoryClick = (categorySlug: string) => {
+    router.push(`/category/${categorySlug}`);
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,6 +46,22 @@ const Footer = () => {
             <p className="text-gray-400 text-sm max-w-sm mx-auto">
               Tu tienda de confianza para tecnología. Calidad garantizada y los mejores precios.
             </p>
+          </div>
+
+          {/* Categorías en móvil */}
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold mb-4 text-center">Productos</h3>
+            <div className="grid grid-cols-2 gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category.slug}
+                  onClick={() => handleCategoryClick(category.slug)}
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm p-2 text-center border border-gray-700 rounded-lg hover:border-gray-600"
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Redes sociales centradas */}
@@ -84,10 +112,18 @@ const Footer = () => {
               
               {/* Redes sociales */}
               <div className="flex space-x-4">
-                <a href="https://www.linkedin.com/in/sebasti%C3%A1n-di-loreto-chavez-759605357/" className="text-gray-400 hover:text-pink-500 transition-colors duration-200">
+                <a 
+                  href="https://www.linkedin.com/in/sebasti%C3%A1n-di-loreto-chavez-759605357/" 
+                  className="text-gray-400 hover:text-pink-500 transition-colors duration-200"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="https://github.com/Sebast1anDL" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+                <a 
+                  href="https://github.com/Sebast1anDL" 
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  aria-label="GitHub"
+                >
                   <Github className="h-5 w-5" />
                 </a>
               </div>
@@ -108,31 +144,19 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
-            {/* Categorías de productos */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Productos</h3>
               <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                    Monitores
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                      TVs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                    Notebooks
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                    Celulares
-                  </a>
-                </li>
+                {categories.map((category) => (
+                  <li key={category.slug}>
+                    <button 
+                      onClick={() => handleCategoryClick(category.slug)}
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-sm text-left w-full hover:translate-x-1 transform transition-transform"
+                    >
+                      {category.name}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 

@@ -24,9 +24,6 @@ const MenuList = () => {
               <ListItem href="/monitores/Asus" title="Asus">
                 Experiencia inmersiva para gaming y productividad.
               </ListItem>
-              <ListItem href="/monitores/Samsung" title="Samsung">
-                Pantallas curvas y planas con la mejor calidad de imagen.
-              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -36,17 +33,11 @@ const MenuList = () => {
           <NavigationMenuTrigger>TVs</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              <ListItem href="/tvs/Samsung" title="Samsung">
-                Tecnología QLED y 4K para una experiencia premium.
-              </ListItem>
               <ListItem href="/tvs/Enxuta" title="Enxuta">
                 Televisores prácticos y accesibles para el día a día.
               </ListItem>
               <ListItem href="/tvs/Smartlife" title="Smartlife">
                 Smart TVs funcionales y fáciles de usar en tu hogar.
-              </ListItem>
-              <ListItem href="/tvs/Xiaomi" title="Xiaomi">
-                Pantallas grandes con Android TV y excelente precio-calidad.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -59,9 +50,6 @@ const MenuList = () => {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <ListItem href="/notebooks/HP" title="HP">
                 Rendimiento confiable para estudio y trabajo.
-              </ListItem>
-              <ListItem href="/notebooks/Asus" title="Asus">
-                Diseño innovador y portátiles para gaming o productividad.
               </ListItem>
               <ListItem href="/notebooks/Lenovo" title="Lenovo">
                 Versatilidad con modelos 2 en 1 y gran durabilidad.
