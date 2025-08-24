@@ -5,9 +5,15 @@ import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { ProductType } from "@/types/products";
 import SkeletonSchema from "./skeletonSchema";
 import { Card, CardContent } from "../ui/card";
+import { useRouter } from "next/navigation";
 
 const FeaturedProducts = () => {
   const { result, loading, error } = useGetFeaturedProducts();
+  const router = useRouter();
+
+  const handleProductClick = (productSlug: string) => {
+    router.push(`/product/${productSlug}`);
+  };
 
   if (error) {
     return (
@@ -47,11 +53,13 @@ const FeaturedProducts = () => {
                 {result.map((product: ProductType) => {
                   if (!product?.productName) return null;
 
-                  const { id, productName, price, images } = product;
+                  const { id, productName, price, images, slug } = product;
 
                   const imageUrl =
                     images && Array.isArray(images) && images.length > 0 && images[0]?.url
-                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`
+                      ? images[0].url.startsWith('http') 
+                        ? images[0].url 
+                        : `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`
                       : "/placeholder.png";
 
                   return (
@@ -59,7 +67,10 @@ const FeaturedProducts = () => {
                       key={id}
                       className="pl-2 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 xl:basis-1/6"
                     >
-                      <Card className="group h-full bg-white dark:bg-gray-800 border-0 dark:border-gray-700 shadow-sm rounded-2xl overflow-hidden">
+                      <Card 
+                        className="group h-full bg-white dark:bg-gray-800 border-0 dark:border-gray-700 shadow-sm rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+                        onClick={() => handleProductClick(slug)}
+                      >
                         <CardContent className="p-0">
                           {/* Imagen del producto */}
                           <div className="relative h-36 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
@@ -67,24 +78,43 @@ const FeaturedProducts = () => {
                               src={imageUrl}
                               alt={productName}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = "/placeholder.png";
+                              }}
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                            
+                            {/* Overlay con icono de flecha */}
+                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="w-8 h-8 bg-white/90 dark:bg-gray-900/90 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                <svg className="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </div>
+                            </div>
                           </div>
 
                           {/* Contenido del producto */}
                           <div className="p-3 space-y-2">
                             <h3
-                              className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-tight line-clamp-2 min-h-[2rem]"
+                              className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-tight line-clamp-2 min-h-[2rem] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
                               title={productName}
                             >
                               {productName}
                             </h3>
 
-                            <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                              ${typeof price === "number" ? price.toFixed(2) : "N/A"}
+                            <p className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                              ${typeof price === "number" ? price.toLocaleString() : "Consultar"}
                             </p>
 
-                            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-sm font-medium py-2 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md">
+                            <button 
+                              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-sm font-medium py-2 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevenir doble clic
+                                handleProductClick(slug);
+                              }}
+                            >
                               Ver Detalles
                             </button>
                           </div>

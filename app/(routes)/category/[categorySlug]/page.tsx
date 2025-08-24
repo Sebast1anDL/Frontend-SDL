@@ -6,16 +6,18 @@ import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import Navbar from "@/components/Header/navbar";
+import Footer from "@/components/Footer/footer";
 import { use } from "react";
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     categorySlug: string;
-  };
+  }>;
 }
 
 const CategoryPage = ({ params }: CategoryPageProps) => {
-   const { categorySlug } = use(params);
+  const resolvedParams = use(params);
+  const { categorySlug } = resolvedParams;
   const { result, loading, error } = useGetCategoryProduct(categorySlug);
   const router = useRouter();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -92,6 +94,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
@@ -119,6 +122,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
             </button>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
@@ -148,6 +152,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
             </button>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
@@ -364,6 +369,8 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
           )}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

@@ -67,14 +67,14 @@ const Footer = () => {
           {/* Redes sociales centradas */}
           <div className="flex justify-center space-x-6 mt-6">
             <a 
-              href="https://www.linkedin.com/in/sebasti%C3%A1n-di-loreto-chavez-759605357/" 
+              href="" 
               className="text-gray-400 hover:text-pink-500 transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-6 w-6" />
             </a>
             <a 
-              href="https://github.com/Sebast1anDL" 
+              href="" 
               className="text-gray-400 hover:text-white transition-colors duration-200"
               aria-label="GitHub"
             >
@@ -87,7 +87,7 @@ const Footer = () => {
               © 2025 SDL E-commerce. Todos los derechos reservados.
             </p>
             <p className="text-gray-500 text-xs">
-              Desarrollado por <span className="text-gray-400">Sebastián Di Loreto</span>
+              Desarrollado por <span className="text-gray-400"></span>
             </p>
           </div>
         </div>
@@ -113,14 +113,14 @@ const Footer = () => {
               {/* Redes sociales */}
               <div className="flex space-x-4">
                 <a 
-                  href="https://www.linkedin.com/in/sebasti%C3%A1n-di-loreto-chavez-759605357/" 
+                  href="" 
                   className="text-gray-400 hover:text-pink-500 transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a 
-                  href="https://github.com/Sebast1anDL" 
+                  href="" 
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
                   aria-label="GitHub"
                 >
@@ -169,7 +169,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-4 w-4 text-gray-400" />
-                  <span className="text-gray-400 text-sm">diloretoseba@gmail.com</span>
+                  <span className="text-gray-400 text-sm">@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-4 w-4 text-gray-400" />
@@ -186,7 +186,7 @@ const Footer = () => {
                 © 2025 SDL E-commerce. Todos los derechos reservados.
               </p>
               <p className="text-gray-500 text-xs">
-                Desarrollado por <span className="text-gray-400">Sebastián Di Loreto</span>
+                Desarrollado por <span className="text-gray-400">S</span>
               </p>
             </div>
           </div>

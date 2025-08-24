@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Search, ShoppingCart, Heart, User } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import MenuList from "./menu-list";
 
 const Navbar = () => {
@@ -15,13 +16,15 @@ const Navbar = () => {
           {/* Logo - Izquierda */}
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <Image
-                src="/logo2.png"
-                alt="SDL Logo"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
+              <Link href="/">
+                <Image
+                  src="/logo2.png"
+                  alt="SDL Logo"
+                  width={80}
+                  height={80}
+                  className="object-contain cursor-pointer"
+                />
+              </Link>
             </div>
           </div>
 
