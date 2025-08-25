@@ -14,6 +14,13 @@ export type ProductType = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  asusBanner: boolean;
+  samsungBanner: boolean;
+  iphoneBanner: boolean;
+  lenovoBanner: boolean;
+  nextRelease: boolean;
+  featuredXiaomi: boolean;
+  
   images: {
     id: number;
     documentId: string;
